@@ -1,683 +1,328 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ON:GI - 세상에서 가장 따뜻한 디지털 치매 예방 솔루션</title>
-<meta name="description" content="ON:GI - 가족의 기억을 잇고 부모님의 건강한 뇌를 지키는 따뜻한 디지털 플랫폼" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>온기(ON:GI) - 대한민국 치매 예방·돌봄의 새로운 디지털 모델</title>
+    <meta name="description" content="기억을 지키고 존엄을 돌보는 온기(ON:GI). 아버지를 위해 자녀가 만든 따뜻한 기술, SaaS 기반 디지털 치매 예방 플랫폼입니다.">
+    <meta name="keywords" content="온기, ON:GI, 치매예방, 디지털돌봄, 기억회상, 온기커넥트, 온기코코, 혁신플랫폼, 시니어헬스케어, 실버테크, 효도플랫폼">
+    <meta name="author" content="ON:GI">
+    <link rel="canonical" href="https://ongi.io.kr/">
 
-<!-- 성능: 필요한 폰트만 프리로드 (Google Fonts) -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@500;700&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="온기(ON:GI) - 기억을 지키고 존엄을 돌봅니다">
+    <meta property="og:description" content="가족의 진심으로 만든 대한민국 치매 예방·돌봄의 새로운 디지털 모델">
+    <meta property="og:url" content="https://ongi.io.kr/">
 
-<style>
-/* ========== THEME (Lux Gold / Champagne / Ivory) ========== */
-:root{
-  --bg:#FFF9F2;
-  --panel:#FFFFFF;
-  --muted:#7a6b61;
-  --text:#2f2f2f;
-  --gold-600:#b8864b; /* primary gold */
-  --gold-500:#d4a86a; /* lighter gold */
-  --champagne:#F6E8D6;
-  --accent:#F0E1CF;
-  --glass: rgba(255,255,255,0.6);
-  --card-shadow: 0 18px 40px rgba(36,30,23,0.10);
-  --soft-shadow: 0 8px 20px rgba(36,30,23,0.06);
-  --radius-lg:20px;
-  --radius-md:12px;
-  --max-width:1100px;
-  --ui-gap:20px;
-  --transition: all 0.28s cubic-bezier(.22,.9,.36,1);
-}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --gold: #C5A059;
+            --soft-black: #1A1A1A;
+        }
 
-/* ========== Base reset & layout ========== */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:'Gmarket Sans',sans-serif;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  background: linear-gradient(180deg,var(--bg),#fffdf8);
-  color:var(--text);
-  line-height:1.65;
-  scroll-behavior:smooth;
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  user-select:text;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            background-color: #F8F8F8;
+            color: var(--soft-black);
+            line-height: 1.8;
+            word-break: keep-all;
+            overflow-x: hidden;
+        }
 
-/* container */
-.container{max-width:var(--max-width);margin:36px auto;padding:0 20px}
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; text-align: center; }
 
-/* header */
-.header{
-  position:sticky; top:0; z-index:60;
-  background: linear-gradient(180deg,#FFF7EF,var(--champagne));
-  box-shadow: var(--soft-shadow);
-  backdrop-filter: blur(4px);
-}
-.header-inner{max-width:var(--max-width);margin:0 auto;padding:18px 20px;display:flex;flex-direction:column;align-items:center}
-.brand-title{font-size:2.9rem;color:var(--gold-600);font-weight:700;letter-spacing:2px;margin:0}
-.brand-sub{font-size:1.05rem;color:var(--gold-500);margin:0 0 2px 0}
+        header { padding: 100px 0 60px; }
+        .top-sub { font-size: 1.1rem; font-weight: 700; color: #333; margin-bottom: 15px; }
+        
+        .main-title { 
+            font-size: 1.8rem; font-weight: 900; color: #111; 
+            line-height: 1.3; letter-spacing: -1px; 
+        }
+        .main-title span { 
+            display: block; 
+            margin-top: 15px; 
+            color: var(--gold); 
+            font-size: 2.5rem; 
+        }
 
-/* grid */
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--ui-gap)}
+        .line-gold { width: 50px; height: 3px; background: var(--gold); margin: 30px auto; }
 
-/* card */
-.card{
-  grid-column:span 12;
-  background:var(--panel);
-  border-radius:var(--radius-lg);
-  padding:26px;
-  box-shadow:var(--card-shadow);
-  border:1px solid rgba(0,0,0,0.04);
-  transform:translateY(28px);
-  opacity:0;
-  transition: transform .7s cubic-bezier(.22,.9,.36,1), opacity .6s ease;
-}
-.card.visible{transform:none;opacity:1}
+        .origin-box { 
+            background: #FFF; border: 1px solid #DDD; padding: 40px 20px;
+            display: inline-block; margin-bottom: 40px; font-weight: 500; 
+            font-size: 1.05rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-align: center; max-width: 800px; width: 100%;
+        }
+        .origin-box h4 { font-size: 1.4rem; font-weight: 900; color: var(--gold); margin-bottom: 25px; }
+        .origin-box p { margin-bottom: 15px; line-height: 1.8; color: #444; }
+        .origin-box .highlight { font-weight: 700; color: #111; }
+        .origin-box .final-msg { margin-top: 25px; font-weight: 800; color: var(--gold); border-top: 1px solid #EEE; padding-top: 20px; }
 
-/* heading & text */
-.card h2{margin:0 0 10px 0;color:var(--gold-600);font-size:1.2rem;font-weight:700}
-.card p{margin:0 0 12px;color:var(--muted)}
-.card ul,.card ol{margin:6px 0 0 0;padding-left:20px;color:var(--muted)}
+        .desc-text { font-size: 1.1rem; color: #666; margin-bottom: 15px; }
+        .vision-text { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
 
-/* icon circle */
-.icon-circle{
-  width:48px;height:48px;border-radius:12px;
-  display:inline-grid;place-items:center;
-  background:linear-gradient(135deg,var(--champagne),#fff);
-  border:1px solid rgba(0,0,0,0.03);
-  color:var(--gold-600);font-size:20px;
-  box-shadow:0 8px 22px rgba(0,0,0,0.06);
-}
+        section { padding: 80px 0; background: #FFF; border-bottom: 1px solid #EEE; }
+        .sec-bg { background: #F2F2F2; }
+        .sec-h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 50px; }
 
-/* label row */
-.label-row{display:flex;gap:14px;align-items:center;margin-bottom:8px}
+        .card { 
+            background: #FFF; padding: 30px 20px; border-radius: 10px;
+            border: 1px solid #EEE; box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            text-align: left;
+        }
+        .service-label { color: var(--gold); font-weight: 700; font-size: 1rem; margin-bottom: 10px; display: block; }
+        .card h3 { font-size: 1.6rem; font-weight: 900; margin-bottom: 20px; }
+        
+        .feature-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 30px; }
+        .feature-grid div { background: #F9F9F9; padding: 15px; text-align: center; font-weight: 700; border: 1px solid #EEE; }
 
-/* feature-grid (cards inside card) */
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;margin-top:12px;
-}
-.feature{
-  background:linear-gradient(180deg,#fff,#fffaf6);
-  border-radius:12px;padding:12px 14px;border:1px solid rgba(0,0,0,0.03);
-  box-shadow:var(--soft-shadow);
-  display:flex;gap:12px;align-items:flex-start;
-}
-.ficon{
-  width:40px;height:40px;border-radius:10px;background:linear-gradient(180deg,var(--gold-500),var(--gold-600));
-  display:grid;place-items:center;color:#fff;font-weight:700;box-shadow:0 8px 18px rgba(0,0,0,0.08);
-}
+        .comp-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
+        .comp-item { background: #FFF; padding: 30px 20px; border-top: 4px solid var(--gold); text-align: left; }
+        .comp-item b { font-size: 1.4rem; color: var(--gold); display: block; margin-bottom: 10px; }
 
-/* callout */
-.callout{
-  margin:18px 0;padding:16px;border-radius:12px;background:linear-gradient(90deg,#fff7f0,#fff2ea);
-  border-left:6px solid var(--gold-600);font-weight:600;color:var(--gold-600);
-  box-shadow:0 8px 20px rgba(0,0,0,0.04)
-}
+        .data-detail-wrap { margin-top: 50px; text-align: left; background: #FFF; padding: 30px; border-radius: 15px; border: 1px dashed var(--gold); }
+        .data-title { font-size: 1.3rem; font-weight: 900; color: #111; margin-bottom: 25px; display: flex; align-items: center; }
+        .data-title::before { content: ""; width: 4px; height: 20px; background: var(--gold); margin-right: 10px; }
+        
+        .data-sub-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
+        .data-group h5 { font-size: 1.1rem; color: var(--gold); margin-bottom: 15px; font-weight: 800; }
+        .data-group ul { list-style: none; }
+        .data-group li { margin-bottom: 8px; position: relative; padding-left: 18px; font-size: 1rem; font-weight: 500; }
+        .data-group li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
 
-/* buttons / cta */
-.btn{
-  display:inline-flex;gap:10px;align-items:center;justify-content:center;
-  padding:12px 22px;border-radius:14px;background:linear-gradient(135deg,var(--gold-600),var(--gold-500));
-  color:#fff;font-weight:700;text-decoration:none;box-shadow:0 12px 30px rgba(176,124,79,0.12);
-  transition: var(--transition);
-}
-.btn:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 18px 40px rgba(176,124,79,0.16) }
+        .table-wrap { width: 100%; overflow-x: auto; margin: 40px 0; border-top: 2px solid #111; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th, td { padding: 18px 10px; border-bottom: 1px solid #EEE; text-align: center; font-size: 1rem; }
+        .gold-cell { background: #FFFDF9; color: var(--gold); font-weight: 900; font-size: 1.1rem; }
 
-/* small chrome icon wrapper */
-.chrome-inline{width:18px;height:18px;vertical-align:middle;margin-right:8px;display:inline-block}
+        .history-box { max-width: 850px; margin: 0 auto; text-align: left; }
+        .history-row { display: flex; flex-direction: column; gap: 5px; padding: 20px 0; border-bottom: 1px solid #EEE; }
+        .h-date { font-weight: 900; color: var(--gold); min-width: 140px; }
 
-/* highlight */
-.highlight{display:block;text-align:center;font-weight:700;font-size:1.15rem;margin:28px 0;color:var(--gold-600)}
+        .btn-wrap { display: flex; flex-direction: column; gap: 15px; justify-content: center; margin-top: 50px; }
+        .btn { padding: 20px; font-size: 1.1rem; font-weight: 900; text-decoration: none; width: 100%; text-align: center; transition: 0.3s; border-radius: 5px; }
+        .btn-black { background: #111; color: #FFF; }
+        .btn-outline { border: 2px solid #111; color: #111; }
 
-/* footer */
-.footer{
-  margin-top:26px;padding:26px;border-radius:12px;background:linear-gradient(180deg,#fff8f2,#fff4ea);
-  text-align:center;color:#5a4b44;font-size:0.96rem;line-height:1.55;box-shadow:var(--soft-shadow)
-}
-.footer a{color:var(--gold-600);font-weight:700;text-decoration:none;cursor:pointer}
+        footer { background: #111; color: #FFF; padding: 80px 20px; text-align: left; }
+        .footer-msg { font-size: 1.6rem; font-weight: 900; margin-bottom: 30px; }
+        .footer-info { color: var(--gold); font-size: 1.1rem; font-weight: 700; margin-bottom: 40px; }
 
-/* modal */
-.modal{display:none;position:fixed;inset:0;background:rgba(10,10,10,0.55);z-index:2200;overflow:auto;padding:28px}
-.modal-inner{max-width:980px;margin:4% auto;background:linear-gradient(180deg,#fffdf8,#fff8f0);border-radius:16px;padding:26px;box-shadow:0 20px 50px rgba(0,0,0,0.28)}
-.modal-close{float:right;font-size:28px;cursor:pointer;color:#333}
+        @media (min-width: 768px) {
+            header { padding: 180px 0 100px; }
+            .top-sub { font-size: 1.8rem; }
+            .main-title { font-size: 3.2rem; letter-spacing: -2px; }
+            .main-title span { font-size: 4rem; margin-top: 20px; }
+            .origin-box { padding: 60px 80px; font-size: 1.2rem; }
+            .origin-box h4 { font-size: 2rem; }
+            .desc-text { font-size: 1.5rem; }
+            .vision-text { font-size: 1.8rem; }
+            
+            section { padding: 120px 0; }
+            .sec-h2 { font-size: 2.8rem; margin-bottom: 80px; }
+            .card { padding: 60px; }
+            .card h3 { font-size: 2.4rem; }
+            
+            .feature-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+            .comp-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
+            .comp-item { padding: 40px 30px; }
+            
+            .data-detail-wrap { padding: 50px; }
+            .data-sub-grid { grid-template-columns: 1fr 1fr; }
 
-/* responsive adjustments */
-@media(min-width:880px){
-  .card.half{grid-column:span 6}
-  .card.third{grid-column:span 4}
-}
-@media(max-width:879px){
-  .brand-title{font-size:2.1rem}
-  .brand-sub{font-size:0.98rem}
-  .container{margin:18px auto}
-  .icon-circle{width:44px;height:44px}
-  .modal{padding:12px}
-  .modal-inner{padding:18px}
-}
-</style>
+            th, td { padding: 25px; font-size: 1.2rem; }
+            .gold-cell { font-size: 1.4rem; }
+            
+            .history-row { flex-direction: row; gap: 30px; padding: 25px 0; }
+            .btn-wrap { flex-direction: row; gap: 20px; }
+            .btn { max-width: 400px; font-size: 1.3rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" role="banner">
-  <div class="header-inner" style="max-width:var(--max-width);margin:0 auto">
-    <h1 class="brand-title">ON:GI</h1>
-    <p class="brand-sub">세상에서 가장 따뜻한 디지털 치매 예방 솔루션 🌸</p>
-  </div>
+<header>
+    <div class="container">
+        <p class="top-sub">기억을 지키고, 존엄을 돌보는</p>
+        <h1 class="main-title">
+            대한민국 치매 예방·돌봄의 새로운 디지털 모델
+            <span>'온기 (ON:GI)'</span>
+        </h1>
+        <div class="line-gold"></div>
+        
+        <div class="origin-box">
+            <p style="font-weight: 800; color: #888; margin-bottom: 10px; font-size: 1rem;">"치매가 시작된 아버지를 위해 자녀가 정성을 담아 개발"</p>
+            <h4>'온기'의 시작</h4>
+            <p>치매 증세가 점점 깊어지는 아버지에게도<br>또렷하게 기억하는 이름이 하나 있습니다.<br>가장 사랑하는 여덟 살 손녀, <span class="highlight">'시아'</span>입니다.</p>
+            <p>아버지는 이제 가족을 이렇게 부르십니다.<br><span class="highlight">'시아 할매', '시아 할배', '시아 아빠'.</span><br>기억이 흐려져도, 사랑으로 연결된 가족의 이름은 남아 있었습니다.</p>
+            <p><span class="highlight">‘온기(ON:GI)’</span>는 이렇게 시작되었습니다.<br>기억은 가족간의 감정과 사람간의 관계라는 사실,<br>그리고 그 기억은 우리를 기다려주지 않는다는 현실에서 출발했습니다.</p>
+            <p>'온기'는 잊히기 전에 기억합니다.<br>사라지기 전에 가족과 함께 기억을 지키고, <br>우리가 함께 기억하고 공감하는,<br>디지털 치매 예방·돌봄 플랫폼입니다.</p>
+            <p class="final-msg">차가운 기술이 아닌,<br>소중한 기억을 지키는 가족의 따뜻한 진심이 먼저입니다.<br>'온기'는 그 마음 하나로 시작되었습니다.</p>
+        </div>
+
+        <p class="desc-text">SaaS 플랫폼과 AI 돌봄 콘텐츠가 결합된 독창적인 디지털 치매 예방·돌봄 모델</p>
+        <p class="vision-text">이제 가족, 시설, 공공을 하나의 생태계로 연결합니다.</p>
+    </div>
 </header>
 
-<main class="container" role="main">
-
-  <!-- 사용 방법 카드 -->
-  <section class="grid" aria-labelledby="usage-title">
-    <article class="card" id="usage-card" role="article" aria-describedby="usage-desc">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <!-- SVG bulb icon (inline, lightweight) -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M9 18h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 2a6.5 6.5 0 00-6.5 6.5c0 2.78 1.98 4.5 2.5 5.5.4.8.2 2.5.2 2.5h8s-.2-1.7.2-2.5c.52-1 2.5-2.72 2.5-5.5A6.5 6.5 0 0012 2z" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+<section class="sec-bg">
+    <div class="container">
+        <h2 class="sec-h2">1. 커넥트 (CONNECT)</h2>
+        <div class="card">
+            <span class="service-label">SaaS 플랫폼 | 한국저작권위원회 저작권 등록</span>
+            <h3>데이터와 공감으로 증명하는 디지털 치매 예방·돌봄 운영 플랫폼</h3>
+            <p style="font-size:1.3rem; color:#666; margin-bottom:40px;">인지 활동 실시간 기록, 리포트 자동 생성, 가족 공유</p>
+            <p style="font-weight:700; margin-bottom:20px;">온기 커넥트 주요 효과</p>
+            <div class="feature-grid">
+                <div>기억 기록 & 관리</div>
+                <div>인지 활동 디지털화</div>
+                <div>자동 리포트 생성</div>
+                <div>가족 실시간 공유</div>
+                <div>데이터 축적·활용</div>
+            </div>
         </div>
-        <div>
-          <h2 id="usage-title">💡 '온기' 사용은 어렵지 않아요!</h2>
-      </div>
-      </div>
-
-      <!-- 본문 (원문 텍스트 100% 보존) -->
-      <ol style="margin-top:14px;padding-left:18px;color:var(--muted);">
-        <li><a class="btn" href="https://ongi.base44.app" target="_blank" rel="noopener">온기 서비스 바로 가기</a></li>
-        <li style="margin-top:10px;">
-          <!-- inline chrome SVG instead of external PNG (performance) -->
-          <span class="chrome-inline" aria-hidden="true">
-            <svg viewBox="0 0 256 256" width="18" height="18" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-              <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#fbbc05"/><stop offset="1" stop-color="#f9ab00"/></linearGradient></defs>
-              <circle cx="128" cy="128" r="120" fill="#fff" />
-              <path d="M128 128 L232 80 A120 120 0 0 0 146 231 Z" fill="#4285F4" opacity="0.95"/>
-              <circle cx="128" cy="128" r="50" fill="#34A853"/>
-              <path d="M128 128 L232 80 A120 120 0 0 1 128 8 Z" fill="#EA4335" opacity="0.95"/>
-            </svg>
-          </span>
-          브라우저: 크롬에서 접속
-        </li>
-        <li style="margin-top:8px;">로그인: 구글 계정으로 간편 로그인</li>
-        <li style="margin-top:8px;">부모님: PC/태블릿에서 로그인 → 서비스 이용</li>
-        <li style="margin-top:8px;">가족: 동일 구글 계정 로그인 → 부모님과 연동</li>
-      </ol>
-    <div class="callout" role="note">‘부모님의 건강한 뇌를 지키고 기억을 잇는 첫 걸음은 간단합니다.'</div>
-    </article>
-  </section>
-
-  <!-- 우리의 현실 -->
-  <section class="grid" aria-labelledby="reality-title">
-    <article class="card" role="article" aria-describedby="reality-desc">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <!-- heart SVG -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20.8 5.6a4.8 4.8 0 00-6.8 0L12 7.6l-2-2a4.8 4.8 0 10-6.8 6.8L12 21l8.8-8.6a4.8 4.8 0 000-6.8z" fill="#bb6f4a"/>
-          </svg>
-        </div>
-        <div>
-          <h2 id="reality-title">💖 우리의 현실입니다.</h2>
-        </div>
-      </div>
-
-      <p id="reality-desc">‘기억과 마음은 가족에게 가장 소중하지만, 쉽게 잊혀지고 멀어집니다.’</p>
-      <ul>
-        <li>초고령화 사회 – 치매 환자의 지속적인 증가</li>
-        <li>바쁜 일상 속 가족 간의 소통 부족 → 정서적 고립 심화</li>
-        <li>부모님의 소중한 기억 회상 필요 + 가족 간의 마음 연결</li>
-      </ul>
-
-      <div class="callout" role="note">‘짧은 시간, 깊은 교감이 우리 부모님과 가족에게 필요합니다.'</div>
-    </article>
-  </section>
-
-  <!-- 특별함과 탄생 배경 -->
-  <section class="grid" aria-labelledby="special-title">
-    <article class="card" role="article">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <!-- star -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 .587l3.668 7.431L23.6 9.75l-5.8 5.656L19.3 24 12 19.897 4.7 24l1.5-8.594L.4 9.75l7.932-1.732L12 .587z" fill="#d29a63"/>
-          </svg>
-        </div>
-        <div><h2 id="special-title">🌟 '온기'만의 특별함과 탄생 배경</h2></div>
-      </div>
-
-      <p style="color:var(--muted)">‘온기는 모방이 아닌 창의적으로 융합한 디지털 치매 예방 솔루션입니다.’</p>
-
-      <div class="feature-grid" role="list">
-        <div class="feature" role="listitem">
-          <div class="ficon" aria-hidden="true">1</div>
-          <div><strong>인지 훈련 대안</strong><div style="color:var(--muted)">가족의 소중한 기억으로 따뜻한 공감과 치유</div></div>
-        </div>
-        <div class="feature" role="listitem">
-          <div class="ficon" aria-hidden="true">2</div>
-          <div><strong>회상 치료 보조</strong><div style="color:var(--muted)">회상 치료를 일상에서 실행할 수 있게 접근성 강화</div></div>
-        </div>
-        <div class="feature" role="listitem">
-          <div class="ficon" aria-hidden="true">3</div>
-          <div><strong>가족 중심 교감</strong><div style="color:var(--muted)">사진·영상 공유를 넘어 깊은 정서 교감 유도</div></div>
-        </div>
-      </div>
-
-      <!-- 원문 텍스트 보존 -->
-      <p style="margin-top:14px;color:var(--muted)"></p>
-      <ul>
-     
-        <li>개인적 필요에서 출발: 치매가 시작된 아버지를 위한 진정성 있는 고민</li>
-        <li>가족 중심 설계: 가족이 직접 참여 가능하고, 고령층도 쉽게 이용</li>
-        <li>가족 간 소통과 공감: 정서적 교감과 디지털 효도 실현</li>
-      </ul>
-<div class="callout" role="note">‘인지 기능이 저하된 아버지를 위해 자녀들이 직접 만든 프로그램입니다.'</div>
-   
-    </article>
-  </section>
-
-  <!-- 주요 기능 -->
-  <section class="grid" aria-labelledby="features-title">
-    <article class="card" role="article">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <!-- sparkles -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 2l1.9 3.9L18 8l-4.1 2.1L12 14l-1.9-3.9L6 8l4.1-2.1z" fill="#d29a63"/>
-          </svg>
-        </div>
-        <div><h2 id="features-title">✨ '온기'의 주요 기능</h2></div>
-      </div>
-
-      <p style="color:var(--muted)">‘5분의 기억 공감, 부모님의 건강한 뇌를 지키고 마음을 잇는 가족의 시간’</p>
-
-      <div class="feature-grid">
-        <div class="feature"><div class="ficon">🧠</div><div><strong>기억 치유하기</strong><div style="color:var(--muted)">5분 회상 퀴즈, 기억 공감</div></div></div>
-        <div class="feature"><div class="ficon">💌</div><div><strong>기억 편지쓰기</strong><div style="color:var(--muted)">10초 영상 편지, 가족 교감</div></div></div>
-        <div class="feature"><div class="ficon">📔</div><div><strong>기억 포토북</strong><div style="color:var(--muted)">가족 기억 앨범, 소중한 순간 공유</div></div></div>
-        <div class="feature"><div class="ficon">🧩</div><div><strong>기억 퍼즐하기</strong><div style="color:var(--muted)">기억 기반 게임, 인지 자극</div></div></div>
-        <div class="feature"><div class="ficon">🔍</div><div><strong>틀린 기억찾기</strong><div style="color:var(--muted)">집중력 강화, 소통의 재미</div></div></div>
-        <div class="feature"><div class="ficon">📊</div><div><strong>기억 리포트</strong><div style="color:var(--muted)">부모님의 변화를 기록·분석</div></div></div>
-      </div>
-<div class="callout" role="note">‘사진 한장으로 웃음도 눈물도 터질 수 있습니다.'</div>
-    </article>
-  </section>
-
- <!-- 온기 커넥트 소개 -->
-        <div style="background:#f9fafc; border-left:4px solid #2b6cb0; padding:20px; margin:40px 0; border-radius:8px;">
-          <h3 style="color:#2b6cb0; margin-top:0;">'온기(ON:GI)'가 노인 보호·치매 시설 전용 프로그램 '온기 커넥트(ON:GI CONNECT)로 확장되었습니다.</h3>
-          <p style="line-height:1.8; margin:0;">
-            <strong> ‘온기’의 핵심 기능인 기억 회상 치유를 기반으로, 시설·기관 운영 환경에 특화된 다양한 관리 기능과 맞춤형 인터페이스가 적용되었습니다.</strong><br><br>
-            • ‘온기 커넥트(ON:GI CONNECT)’</strong>는 우리 어르신들이 함께한 소중한 기억을 보존하고 공감하며,  
-          가족 및 친구와의 유대감을 강화하고 인지 능력 향상과 치매 예방을 돕는 세상에서 가장 따뜻한 디지털 솔루션입니다.
-          </p>
-        </div>
-
- <!-- 서비스 바로가기 -->
-        <h3 style="color:#2b6cb0;">서비스 바로가기</h3>
-        <div style="text-align:center; margin:25px 0;">
-          <a href="http://www.ongi.io.kr" 
-             style="display:inline-block; background-color:#2b6cb0; color:#fff; padding:12px 24px; margin:5px; border-radius:8px; text-decoration:none; font-weight:600;">
-             🌐 온기 홈페이지
-          </a>
-          <a href="https://ongi.base44.app/" 
-             style="display:inline-block; background-color:#38a169; color:#fff; padding:12px 24px; margin:5px; border-radius:8px; text-decoration:none; font-weight:600;">
-             👤 온기 (개인 전용 프로그램)
-          </a>
-          <a href="https://ongi-connect.base44.app/" 
-             style="display:inline-block; background-color:#805ad5; color:#fff; padding:12px 24px; margin:5px; border-radius:8px; text-decoration:none; font-weight:600;">
-             🏠 온기 커넥트 (시설 전용 프로그램)
-          </a>
-          <a href="https://naver.me/5YSr5iWi" 
-             style="display:inline-block; background-color:#e53e3e; color:#fff; padding:12px 24px; margin:10px auto 0; border-radius:8px; text-decoration:none; font-weight:700;">
-             💌 선도 시설(Partner) 신청
-          </a>
-        </div>
-
-        <!-- 주요 기능 -->
-        <h3 style="color:#2b6cb0;">온기 커넥트 — 주요 기능 및 효과</h3>
-
-        <table width="100%" border="1" cellspacing="0" cellpadding="10" style="border-collapse:collapse; text-align:left; margin:25px 0; font-size:14px;">
-          <tr style="background:#e2e8f0; font-weight:bold;">
-            <th>기능</th>
-            <th>주요 내용</th>
-            <th>주요 효과</th>
-          </tr>
-          <tr>
-            <td>입소자·팀 관리</td>
-            <td>입소자 등록, 보호자 정보, 팀 구성, 출석/상태 관리, 엑셀 내보내기</td>
-            <td>입소자 정보 및 참여 관리 효율화</td>
-          </tr>
-          <tr>
-            <td>기억 치유하기(회상)</td>
-            <td>사진/영상 업로드 → 기억 퀴즈(질문+선택지) 생성 → 기억 모음 관리</td>
-            <td>사진·영상으로 생활 기록 → 회상 유도, 반응 기록으로 인지 자극 제공</td>
-          </tr>
-          <tr>
-            <td>프로그램 운영</td>
-            <td>시설 단체 프로그램 시작/진행 → 반응도(1-10점), 기분·관찰 메모, 사진/영상 기록</td>
-            <td>팀 단위 진행으로 참여 유도 및 사회적 교감 강화, 운영 시간 절약</td>
-          </tr>
-          <tr>
-            <td>리포트·통계</td>
-            <td>기억 리포트 / 프로그램 리포트 (기간 필터, 팀별/입소자별, PDF 저장)</td>
-            <td>정량적 데이터로 케어 근거 확보, 보호자·기관 보고에 사용 가능</td>
-          </tr>
-          <tr>
-            <td>가족 공유</td>
-            <td>보호자 이메일 발송, 영상 편지·포토북 공유</td>
-            <td>비대면 참여 확대 → 보호자 만족 및 신뢰도 상승</td>
-          </tr>
-          <tr>
-            <td>관리 편의</td>
-            <td>관리자 비밀번호, 시설 일정표·직원 근무 스케줄·식단표 관리</td>
-            <td>시설 운영 통합관리로 행정 부담 감소</td>
-          </tr>
-        </table>
-
-        <!-- 선도 시설 모집 절차 -->
-        <h3 style="color:#2b6cb0;">선도 시설(Partner) 참여 절차</h3>
-        <ol style="line-height:1.8; margin-bottom:25px;">
-          <li>선도 시설(Partner) 신청</li>
-          <li>별도 연락 및 안내</li>
-          <li>온라인(ZOOM) 시연 및 설명회</li>
-          <li>프로그램 설치 및 운영</li>
-          <li>운영 피드백 및 개선 협력</li>
-        </ol>
-
-        <!-- 프로그램 시작 절차 -->
-        <h3 style="color:#2b6cb0;">프로그램 시작 절차 (크롬 브라우저에서 설치·이용)</h3>
-        <ol style="line-height:1.8; margin-bottom:35px;">
-          <li>회원가입(구글 이메일) → 서비스 이용약관·개인정보처리방침 동의</li>
-          <li>시설 정보 등록(시설사진, 직원 등록, 대표 이메일 등)</li>
-          <li>시설 관리 비밀번호(4자리) 설정 → 시설 관리 메뉴 잠금·해제</li>
-          <li>입소자 등록 → 팀 구성 → 프로그램 등록·배정 → 기억 치유하기 등 프로그램 진행</li>
-          <li>활동 완료 후 리포트 확인 → 보호자 이메일 발송</li>
-        </ol>
-
-        <!-- 광역권 파트너 모집 -->
-        <div style="background:#f9fafc; border-left:4px solid #2b6cb0; padding:20px; margin:40px 0; border-radius:8px;">
-          <h3 style="color:#2b6cb0; margin-top:0;">온기 커넥트 광역권 총괄 파트너 모집</h3>
-          <p style="line-height:1.8; margin:0;">
-            <strong>'온기와 함께 지역의 기억과 행복을 잇는 든든한 파트너'</strong><br><br>
-            • 광역권 단위에서 '온기 커넥트' 시설·기관 모집 및 관리<br>
-            • 광역권 내 총괄 운영자로서 공식 활동 권한 부여 및 성과 기반 혜택(인센티브 등) 제공
-          </p>
-        </div>
-
-  <!-- 연구 사례 -->
-  <section class="grid" aria-labelledby="research-title">
-    <article class="card" role="article">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 00-5 5v3a5 5 0 005 5 5 5 0 005-5V7a5 5 0 00-5-5z" fill="#c9a26f"/></svg>
-        </div>
-        <div><h2 id="research-title">🔬 '온기'에 도움이 되는 연구 및 사례</h2></div>
-      </div>
-
-      <ul>
-        <li>Moon & Park (2020, BMC Geriatrics) - 디지털 기억 회상치료 → 노인의 우울감 감소, 참여도 증가</li>
-        <li>Siverová & Bužgová (2004, 체코 오스트라바 의과대학) - 장기 요양 시설 거주 노인 대상 연구 → 우울·불안 감소, 자존감·인지 기능 향상</li>
-      </ul>
-     <div class="callout" role="note">‘기억의 회상과 교감은 부모님의 건강한 뇌를 지키는데 큰 도움이 됩니다.'</div>
-    </article>
-  </section>
-
-  <!-- 가치와 비전 -->
-  <section class="grid" aria-labelledby="vision-title">
-    <article class="card" role="article">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16 4.5 20l2-7L1 9h7z" fill="#bd8a57"/></svg>
-        </div>
-        <div><h2 id="vision-title">🏆 '온기'의 가치와 비전</h2></div>
-      </div>
-
-      <p style="color:var(--muted)">‘가족과 부모님의 행복과 교감을 높이고, 기관과 사회에 실질적 가치를 제공’</p>
-      <ul>
-        <li>부모님 → 인지 기능 개선 & 정서적 안정</li>
-        <li>가족 → 새로운 소통 창구 & 디지털 효도</li>
-        <li>기관·시설 → 프로그램 다양화 & 데이터 기반 관리</li>
-        <li>사회 → 공익적 보급 & 복지비용 절감</li>
-      </ul>
-
-      <p style="margin-top:10px;color:var(--muted)">'온기는 미래의 디지털 유산입니다.'</p>
-      <ul>
-        <li>가족의 사랑과 기억을 남기는 디지털 기록</li>
-        <li>세대를 잇는 정서적 자산</li>
-        <li>독창적이고 혁신적인 가족 기억 공감·치유 플랫폼</li>
-      </ul>
-    <div class="callout" role="note">‘부모님께 드리는 최고의 선물은 건강한 뇌의 기억입니다.'</div>
-    </article>
-  </section>
-
-  <!-- 연혁 -->
-  <section class="grid" aria-labelledby="timeline-title">
-    <article class="card" role="article">
-      <div class="label-row">
-        <div class="icon-circle" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 10h10M7 6h10M7 14h6" stroke="#c99a66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div><h2 id="timeline-title">📅 '온기가' 걸어가는 길</h2></div>
-      </div>
-
-      <ul>
-        <li>2025.08.25 – '온기' 개발 시작</li>
-        <li>2025.09.01 – '온기' 베타 버전 개발 완료</li>
-        <li>2025.09.10 – 인천 노인 보호센터 '온기' 시범사업 개시 (<a href="https://www.globalepic.co.kr/view.php?ud=2025090915355881396cf2d78c68_29" target="_blank" rel="noopener">기사 보기</a>)</li>
-        <li>2025.09.23 – '온기' 한국저작권위원회 저작권 공식 등록</li>
-        <li>2025.09.26 – '온기' 주요 기능 업데이트</li>
-        <li>2025.09월 중 – 전국 2,500여개 시설 '온기' 체험 안내</li>
-        <li>2025.09월 중 – 대기업 200여개 ESG 담당자 '온기' 제휴 안내</li>
-        <li>2025.10.01 – 개인 가족 대상 '온기' 서비스 공개</li>
-        <li>2025.10.02 – 국립강릉원주대학교 간호학과 '온기' 온라인 특강 (<a href="https://www.nbntv.co.kr/news/articleView.html?idxno=4010369" target="_blank" rel="noopener">기사 보기</a>)</li>
-         <li>2025.10.27 - 노인·치매 시설 전용 프로그램 '온기 커넥트(ON:GI CONNECT)' 개발 완료</li>
-         <li>2025.11.03 - 인천광역시 광역치매센터 '온기&온기 커넥트' 시연·설명회 개최</li>
-         <li>2025.11.03 - 대전 노인 보호센터 '온기 커넥트' 선도 시설 시범사업 개시</li>
-         <li>2025.11월 중 - 전국 2,500여개 시설 '온기 커넥트' 선도 시설 참여 안내</li>
-        <li>2025.11월~12월 – '온기 커넥트' 선도 시설 시범 사업 확대</li>
-      </ul>
-    <div class="callout" role="note">‘세상에서 가장 따뜻한 디지털이 되기위해 한발 한발 걸어가겠습니다.'</div>
-    </article>
-  </section>
-
-  <div class="highlight">'기억'은 기다려주지 않습니다. 오늘부터 시작하는 디지털 치매 예방 솔루션 'ON:GI'</div>
-
-  <!-- CTA -->
-<section class="grid" aria-label="call-to-action">
-  <article class="card" style="text-align:center">
-    <a class="btn" href="https://ongi.base44.app" target="_blank" rel="noopener">
-      디지털 효도 '온기' 시작하기 💛
-    </a>
-    <div style="height:14px"></div>
-    <a class="btn" href="https://naver.me/5YSr5iWi" target="_blank" rel="noopener" style="background:linear-gradient(135deg,#c99a66,#b67644);">
-      시설 전용 프로그램 '온기 커넥트' 선도시설 신청하기 🏢
-    </a>
-  </article>
-</section>
-
-  <!-- 문의 -->
-<section class="grid" aria-label="contact">
-  <article class="card" style="text-align:center">
-    <p style="margin:0">
-      📩 궁금한 점이 있나요❓
-      <a href="mailto:ongilab2025@gmail.com" style="color:#FF6B4A; text-decoration:none;">
-        문의하기
-      </a>
-    </p>
-  </article>
-</section>
-
-  <!-- Footer (원문 저작권 문구 — 내용 절대 변경 없음) -->
-  <footer class="footer" role="contentinfo">
-    <p style="margin:0 0 10px 0">
-      ⓒ 2025 ON:GI. All rights reserved.<br>
-      본 서비스의 화면, 기능, 디자인 및 데이터는 ON:GI의 지적재산권으로 보호받습니다.<br>
-      무단 복제, 배포, 수정 및 상업적 이용은 금지되며, 위반 시 저작권법 및 부정경쟁방지법에 따라 민형사상 책임을 질 수 있습니다.
-    </p>
-    <p style="margin:0"><a id="termsBtn">이용약관</a> | <a id="privacyBtn">개인정보 처리방침</a></p>
-  </footer>
-
-</main>
-
-<!-- MODAL (약관/개인정보 처리방침 전문 — 원문 그대로) -->
-<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-  <div class="modal-inner">
-    <div class="modal-inner-content">
-      <span id="closeModal" class="modal-close" aria-label="닫기">&times;</span>
-      <div id="modalText" style="white-space:pre-wrap;color:#333;line-height:1.65;font-size:0.95rem"></div>
     </div>
-  </div>
-</div>
+</section>
 
-<script>
-/* ========== Scroll reveal (IntersectionObserver) ========== */
-(function(){
-  const cards = document.querySelectorAll('.card');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-    },{threshold:0.12});
-    cards.forEach(c => io.observe(c));
-  } else {
-    // Fallback: reveal all
-    cards.forEach(c=>c.classList.add('visible'));
-  }
-})();
+<section>
+    <div class="container">
+        <h2 class="sec-h2">2. 코코 (COCO)</h2>
+        <div class="card">
+            <span class="service-label">AI 인터랙션 홀로그램 디바이스 | 중소벤처기업부 혁신제품 지정</span>
+            <h3>어르신의 정서적 동행자이자 현장의 돌봄 공백을 해소하는 공감 콘텐츠</h3>
+            <p style="font-size:1.3rem; color:#666; margin-bottom:40px;">실감형 AI 대화 콘텐츠, 활동 데이터 자동 저장, 가족 공유</p>
+            <p style="font-weight:700; margin-bottom:20px;">온기 코코 주요 효과</p>
+            <div class="feature-grid">
+                <div>AI 말벗 & 정서 교감</div>
+                <div>돌봄 공백 시간 케어</div>
+                <div>사진·영상 자동 연동</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-/* ========== Modal: insert full original terms & privacy (unchanged) ========== */
-const modal = document.getElementById('modal');
-const modalText = document.getElementById('modalText');
-const closeModal = document.getElementById('closeModal');
+<section>
+    <div class="container">
+        <div style="background:#111; padding:60px 30px; border-radius:32px;">
+            <p style="font-size:1.8rem; font-weight:900; color:#fff; line-height: 1.4;">
+                ‘기억’은 우리를 기다려주지 않습니다.
+            </p>
+            <p style="margin-top:20px; font-size:1.3rem; font-weight:700; color:#C5A059; line-height: 1.4;">
+                오늘부터 시작하는 디지털 치매 예방·돌봄 솔루션 ‘ON:GI’
+            </p>
+        </div>
+    </div>
+</section>
 
-const termsContent = `온기 이용약관
+<section class="sec-bg">
+    <div class="container">
+        <h2 class="sec-h2">3. 온기의 경쟁력</h2>
+        <div class="comp-grid">
+            <div class="comp-item"><b>지속성</b><span>일회성 프로그램을 넘어 데이터가 축적되는 지속 가능한 운영 구조</span></div>
+            <div class="comp-item"><b>투명성</b><span>보호자가 실시간으로 확인하고 공감하는 상시 공유 시스템</span></div>
+            <div class="comp-item"><b>확장성</b><span>개인·민간 시설·공공 기관 연결 공감 데이터 구축</span></div>
+        </div>
 
-제1조(목적)
-이 약관은 ON:GI(이하 '회사')가 제공하는 디지털 효도 서비스(이하 '서비스')의 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>기존 인지 프로그램</th>
+                        <th>온기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>운영 방식</td>
+                        <td>오프라인·일회성</td>
+                        <td class="gold-cell">디지털·축적형</td>
+                    </tr>
+                    <tr>
+                        <td>기록 방식</td>
+                        <td>종이 기록·개별 관리</td>
+                        <td class="gold-cell">데이터화·자동 생성</td>
+                    </tr>
+                    <tr>
+                        <td>가족 참여</td>
+                        <td>일부 가능</td>
+                        <td class="gold-cell">실시간 공유·공감</td>
+                    </tr>
+                    <tr>
+                        <td>확장성</td>
+                        <td>시설 단위 한계</td>
+                        <td class="gold-cell">전국 단위 확산 가능</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-제2조(약관의 효력)
-1. 이용자는 서비스를 이용함으로써 본 약관에 동의한 것으로 간주합니다.
-2. 회사는 약관 변경 시 서비스 공지사항 및 이메일을 통해 사전 고지합니다.
+        <div class="data-detail-wrap">
+            <h4 class="data-title">온기 콘텐츠·데이터</h4>
+            <div class="data-sub-grid">
+                <div class="data-group">
+                    <h5>콘텐츠 자산</h5>
+                    <ul>
+                        <li>14개 카테고리 기억 콘텐츠 300개 이상</li>
+                        <li>기억 인지 회상 모음 40개 이상</li>
+                        <li>6대 인지 영역 포함</li>
+                        <li>랜덤 모드 기반 무제한 확장 구조</li>
+                    </ul>
+                </div>
+                <div class="data-group">
+                    <h5>데이터 가치</h5>
+                    <ul>
+                        <li>인지 반응 정량 데이터 & 활동 관찰 정성 메모</li>
+                        <li>사진·영상 기반 디지털 기록</li>
+                        <li>가족·시설 공유 가능 실시간 공감 시스템</li>
+                        <li>치매 예방·돌봄 실증 데이터 축적</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-제3조(서비스 이용)
-1. 이용자는 본 서비스 계정을 통해 디지털 효도 기능을 사용할 수 있습니다.
-2. 회사는 서비스 안정성 및 품질 향상을 위해 기능 개선 및 업데이트를 진행할 수 있습니다.
+        <h3 style="color: var(--gold); font-size: 1.5rem; margin-top: 60px; font-weight: 900;">➡ '온기'는 기억을 지키고, '우리'는 존엄한 돌봄을 함께합니다.</h3>
+    </div>
+</section>
 
-제4조(계정)
-1. 계정은 구글 계정과 연동되며, 이용자는 본인의 계정을 안전하게 관리해야 합니다.
-2. 타인 계정 도용 시 발생하는 모든 문제에 대한 책임은 이용자에게 있습니다.
+<section>
+    <div class="container">
+        <h2 class="sec-h2">4. 온기의 발걸음</h2>
+        <div class="history-box">
+            <div class="history-row"><span class="h-date">2025.08.25</span><span>‘온기(ON:GI)’ 개발 시작</span></div>
+            <div class="history-row"><span class="h-date">2025.09.23</span><span>한국저작권위원회 저작권 공식 등록 완료</span></div>
+            <div class="history-row"><span class="h-date">2025.10.02</span><span>국립강릉원주대학교 간호학과 대학원 온라인 특강 진행</span></div>
+            <div class="history-row"><span class="h-date">2025.12.29</span><span>인천광역치매센터(인천광역시) 시범사업 설명회 및 플랫폼 시연 개최</span></div>
+            <div class="history-row"><span class="h-date">2026.01.05</span><span>인천광역시 요양원 및 대전광역시 주간보호센터 민간 시설 서비스 개시</span></div>
+        </div>
+    </div>
+</section>
 
-제5조(개인정보 보호)
-1. 이용자의 개인정보는 개인정보 처리방침에 따라 보호됩니다.
-2. 회사는 개인정보를 동의 없이 제3자에게 제공하지 않습니다.
+<section class="sec-bg">
+    <div class="container">
+        <h2 class="sec-h2">5. 커넥트 (CONNECT) 서비스 바로 가기</h2>
+        <div class="btn-wrap">
+            <a href="https://app.ongi.io.kr/" class="btn btn-outline" target="_blank">개인·가족 전용 서비스</a>
+            <a href="https://ongiconnect.com/" class="btn btn-black" target="_blank">공공·민간 시설 전용 서비스</a>
+        </div>
+    </div>
+</section>
 
-제6조(서비스 이용 제한)
-회사는 다음 경우 이용을 제한할 수 있습니다.
-1. 법령 위반 행위
-2. 타인 권리 침해
-3. 서비스 정상 운영 방해
-
-제7조(면책)
-1. 서비스 이용 중 발생한 문제에 대해 회사는 고의·중과실이 없는 한 책임을 지지 않습니다.
-2. 천재지변, 서버 장애 등 불가항력적 사유로 인한 피해는 면책됩니다.
-
-제8조(준거법)
-본 약관은 대한민국 법령을 준거법으로 합니다.
-`;
-
-const privacyContent = `온기 개인정보처리방침
-
-제1조 (개인정보 수집 항목)
-온기는 서비스 제공을 위해 다음 개인정보를 최소한으로 수집합니다:
-- 필수 항목: 이름(또는 닉네임), 연락처(휴대폰 번호 또는 이메일), 계정 정보(아이디/비밀번호)
-- 선택 항목: 사진·영상, 회상 기록, 반응 데이터(웃음·표정·대화 로그 등)
-
-제2조 (개인정보 수집 방법)
-1. 회원 가입 및 서비스 이용 과정에서 이용자가 직접 입력
-2. 서비스 이용 과정에서 자동 생성되는 데이터(로그, 접속기록 등)
-
-제3조 (개인정보의 이용 목적)
-- 서비스 제공 및 본인 확인
-- 회상 퀴즈, 기억 리포트 생성 등 맞춤형 기능 제공
-- 서비스 품질 향상 및 연구·정책 근거 데이터 활용
-- 고객 응대 및 공지사항 전달
-
-제4조 (개인정보의 보관 및 파기)
-1. 개인정보는 원칙적으로 서비스 제공 목적 달성 시 즉시 파기합니다.
-2. 관련 법령에 따라 일정 기간 보관이 필요한 경우 해당 법령을 따릅니다.
-3. 사진·영상 등 콘텐츠는 업로드 후 1주~최대 6개월 내 자동 삭제됩니다.(시범사업 기준)
-
-제5조 (개인정보의 제3자 제공)
-온기는 이용자의 동의 없이는 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우 예외로 합니다:
-- 법령에 따른 요구가 있는 경우
-- 통계·연구 목적으로 개인을 식별할 수 없는 형태로 제공하는 경우
-
-제6조 (개인정보 처리 위탁)
-운영은 필요 시 일부 업무를 외부 업체에 위탁할 수 있으며, 이 경우 해당 내용을 이용자에게 사전 고지합니다.
-
-제7조 (이용자의 권리)
-- 이용자는 본인의 개인정보를 열람·수정·삭제를 요구할 수 있습니다.
-- 개인정보 처리에 대한 동의를 철회할 수 있습니다.
-
-제8조 (안전성 확보 조치)
-온기는 개인정보 보호를 위해 다음과 같은 조치를 취합니다:
-- 데이터 암호화 및 접근권한 최소화
-- 정기적 보안 점검 및 취약점 패치
-- 개인정보 접근 로그 기록 및 관리
-
-제9조 (개인정보 보호책임자)
-온기는 개인정보 보호를 위하여 개인정보 보호책임자를 지정합니다:
-- 책임자: 개인정보 보호책임자
-- 이메일: ongilab2025@gmail.com
-`;
-
-/* open modal */
-document.getElementById('termsBtn').addEventListener('click', function(){
-  modalText.textContent = termsContent;
-  modal.style.display = 'block';
-  modal.setAttribute('aria-hidden','false');
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-document.getElementById('privacyBtn').addEventListener('click', function(){
-  modalText.textContent = privacyContent;
-  modal.style.display = 'block';
-  modal.setAttribute('aria-hidden','false');
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-/* close modal */
-closeModal.addEventListener('click', function(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); });
-
-window.addEventListener('click', function(e){
-  if(e.target === modal){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
-});
-window.addEventListener('keydown', function(e){
-  if(e.key === 'Escape' && modal.style.display==='block'){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
-});
-
-/* accessibility: focus trap minimal (focus close btn on open) */
-(function(){
-  const termsBtn = document.getElementById('termsBtn');
-  const privacyBtn = document.getElementById('privacyBtn');
-  function openAndFocus(text){
-    modalText.textContent = text;
-    modal.style.display='block';
-    modal.setAttribute('aria-hidden','false');
-    closeModal.focus();
-  }
-  termsBtn.addEventListener('click', ()=> openAndFocus(termsContent));
-  privacyBtn.addEventListener('click', ()=> openAndFocus(privacyContent));
-})();
-</script>
+<footer>
+    <div class="container">
+        <p class="footer-msg">“기억을 지키고, 존엄을 돌보며 공감하는 세상, '온기'가 만들겠습니다.”</p>
+        <p class="footer-info">[상담·문의: ongilab2025@gmail.com]</p>
+        <div style="border-top:1px solid #333; padding-top:40px; font-size:0.9rem; color:#777;">
+            <p style="margin-bottom:15px; color:#bbb;">'온기(ON:GI)'는 의료·진단·치료를 대체하지 않으며, 비약물적 치매 예방 및 존엄 돌봄을 위한 생활·정서·기억 관리 디지털 플랫폼입니다.</p>
+            <p style="color:white; font-weight:700; margin-bottom:10px;">© ON:GI. All rights reserved.</p>
+            <p>본 서비스의 화면, 기능, 디자인 및 데이터는 'ON:GI'의 지식재산권으로 보호받습니다. 무단 복제, 배포, 수정 및 상업적 이용을 금지하며, 위반 시 저작권법 및 부정경쟁방지법에 의한 민·형사상 처벌을 받을 수 있습니다.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
-
